@@ -7,7 +7,9 @@ import { useSelector } from "react-redux";
 const BetaHomeScreen = () => {
   const userData = useSelector((state) => state.user);
   const customerAvatar = localStorage.getItem("customerAvatar");
-
+  const customerAvatarGoogle = localStorage.getItem("GoogleLoginPicture");
+  const customerNameGoogle = localStorage.getItem("GoogleLoginName");
+  const customerEmailGoogle = localStorage.getItem("GoogleLoginEmail");
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -17,7 +19,8 @@ const BetaHomeScreen = () => {
       "🚀 Hello, I visited your app as a Beta user now give me my return revards Abhishek (Most handsome man since the human Civilization) . Here are my details: 🚀";
 
     const formDataText =
-      `🧔🏻Visitor Name: ${userData.name}\n` + `📭Email: ${userData.email}\n`;
+      `🧔🏻Visitor Name: ${userData.name || customerNameGoogle}\n` +
+      `📭Email: ${userData.email || customerEmailGoogle}\n`;
 
     const finalMessage = `${messageHeader}\n\n${formDataText}`;
 
@@ -37,13 +40,11 @@ const BetaHomeScreen = () => {
           transition={{ duration: 0.5 }}
           className="mb-8 mt-10"
         >
-          {customerAvatar && (
-            <img
-              src={customerAvatar}
-              alt="Customer Avatar"
-              className="w-40 h-40 rounded-full"
-            />
-          )}
+          <img
+            src={customerAvatar || customerAvatarGoogle}
+            alt="Customer Avatar"
+            className="w-40 h-40 rounded-full"
+          />
         </motion.div>
 
         <motion.div
@@ -53,7 +54,7 @@ const BetaHomeScreen = () => {
           className="text-center"
         >
           <h1 className="text-2xl font-semibold mb-2">
-            Welcome {userData.name}
+            Welcome {userData.name || customerNameGoogle}
           </h1>
           <p className="text-gray-600 p-4 left-20 pl-1 pr-1 lg:pl-40 lg:pr-40">
             Thank you for being a part of our development phase. Please redeem
