@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SideImg from "../images/background8.png";
+import SideImg from "../images/background9.png";
 import logo from "../images/logo2.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -54,7 +54,7 @@ const Login = () => {
       ) : (
         <>
           <img
-            className="hidden lg:block object-left rounded-tr-[20rem] overflow-hidden m-0 p-0 "
+            className="hidden lg:block object-left rounded-tr-[20rem] overflow-hidden m-0 p-0  w-1/2"
             src={SideImg}
             alt="Your Alt Text"
           />
@@ -68,11 +68,11 @@ const Login = () => {
                   transition={{ type: "spring", duration: 1 }}
                   src={logo}
                   alt="Logo"
-                  className="mx-auto h-28"
+                  className="mx-auto h-28 filter"
                 />
               </div>
               <motion.h2
-                className="text-4xl font-semibold text-gray-800 text-left mb-6"
+                className="text-4xl font-semibold text-gray-800 text-left mb-6 "
                 initial={{ x: -500, opacity: 0 }}
                 animate={{ x: 0, opacity: 2 }}
                 transition={{ type: "spring", duration: 1 }}

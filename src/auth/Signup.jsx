@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideImg from "../images/background8.png";
+import SideImg from "../images/background9.png";
 import logo from "../images/logo2.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -115,7 +115,7 @@ const Signup = () => {
       ) : (
         <>
           <img
-            className="hidden lg:block object-left rounded-tr-[20rem] overflow-hidden m-0 p-0"
+            className="hidden lg:block object-left rounded-tr-[20rem] overflow-hidden m-0 p-0 w-1/2"
             src={SideImg}
             alt="Your Alt Text"
           />
