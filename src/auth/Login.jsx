@@ -100,6 +100,16 @@ const Login = () => {
                     />
                   </motion.div>
                 </GoogleOAuthProvider>
+
+                <div className="mt-10">
+                  or{" "}
+                  <span
+                    className="text-bold text-rose-400"
+                    onClick={() => navigate("/signup")}
+                  >
+                    Signup{" "}
+                  </span>
+                </div>
               </form>
             </div>
           </div>
