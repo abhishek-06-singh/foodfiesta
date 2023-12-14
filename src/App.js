@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import Login from "./auth/Login";
 import Home from "./home/Home";
+import BetaHomeScreen from "./beta/BetaHomeScreen";
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
+          {/* <Route path="/home" element={<Home />} /> */}
+          <Route path="/home" element={<BetaHomeScreen />} />
         </Routes>
       </Router>
     </Provider>

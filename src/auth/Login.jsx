@@ -7,11 +7,11 @@ import { setUserData } from "../store/userSlice";
 import { motion } from "framer-motion";
 import LoadingScreen from "../loading/LoadingScreen";
 import { FaUser } from "react-icons/fa";
+import UploadPhotoModal from "../modals/UploadPhotoModal";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [profilePhoto, setProfilePhoto] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +23,7 @@ const Login = () => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,13 +33,6 @@ const Login = () => {
     });
 
     validateField(name, value);
-  };
-
-  const handleProfilePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setProfilePhoto(URL.createObjectURL(file));
-    }
   };
 
   const validateField = (fieldName, value) => {
@@ -85,20 +79,28 @@ const Login = () => {
     const isFormValid = Object.values(errors).every((error) => error === "");
 
     if (isFormValid) {
-      setIsLoading(true);
-
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Dispatch the action to update user data in the Redux store
-      dispatch(setUserData(formData));
-
-      console.log("Form submitted:", formData);
-
-      setIsLoading(false);
-      navigate("/home");
+      setIsModalOpen(true);
     } else {
       console.log("Form has errors. Please fix them before submitting.");
     }
+  };
+
+  const handleUpload = (file) => {
+    // Handle file upload logic here
+    setFormData({ ...formData, profilePhoto: file });
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setIsLoading(true);
+
+    // Dispatch the action to update user data in the Redux store
+    dispatch(setUserData(formData));
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/home");
+    }, 2000);
   };
 
   return (
@@ -140,36 +142,6 @@ const Login = () => {
               </motion.h2>
 
               <form onSubmit={handleSubmit}>
-                <div className="flex items-center  justify-center mb-5">
-                  <label
-                    htmlFor="profile-photo"
-                    className="cursor-pointer items-end"
-                  >
-                    {profilePhoto ? (
-                      <img
-                        src={profilePhoto}
-                        alt="Profile Preview"
-                        className="h-20 w-20 rounded-full mb-2"
-                      />
-                    ) : (
-                      <FaUser
-                        className="h-20 w-20 text-gray-300 mb-2"
-                        onClick={() =>
-                          document.getElementById("profile-photo").click()
-                        }
-                      />
-                    )}
-                    <input
-                      id="profile-photo"
-                      name="profile-photo"
-                      type="file"
-                      className="hidden"
-                      accept="image/*"
-                      onChange={handleProfilePhotoChange}
-                    />
-                  </label>
-                </div>
-
                 <div className="mb-4">
                   <label
                     htmlFor="email"
@@ -239,7 +211,7 @@ const Login = () => {
 
                 <div className="mb-4 text-right">
                   <a href="#" className="text-sm text-blue-500 hover:underline">
-                    Already have account ?
+                    Already have an account?
                   </a>
                 </div>
 
@@ -254,6 +226,12 @@ const Login = () => {
               </form>
             </div>
           </div>
+          {/* Render the UploadPhotoModal */}
+          <UploadPhotoModal
+            isOpen={isModalOpen}
+            onClose={handleModalClose}
+            onUpload={handleUpload}
+          />
         </>
       )}
     </motion.div>

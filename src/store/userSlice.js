@@ -46,6 +46,6 @@ const userSlice = createSlice({
 
 export const { setUserData, clearUserData } = userSlice.actions;
 export const selectUserData = (state) => state.user;
-export { saveUserData }; // Export saveUserData function
+export { saveUserData };
 
 export default userSlice.reducer;
