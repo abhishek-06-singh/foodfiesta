@@ -88,21 +88,21 @@ const BetaHomeScreen = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mt-8 flex flex-col items-center justify-center p-5 bg-rose-200 w-full"
+        className="mt-8 flex flex-col items-center justify-center p-5 bg-sky-950 w-full"
       >
         <img
           src={DeveloperAvtar}
           alt="Developer Avatar"
           className="w-20 h-20 rounded-full mb-4"
         />
-        <p className="text-gray-700 font-semibold text-lg">
-          <span>Developer = </span>
-          <span className="text-md text-indigo-700">
+        <p className="text-gray-100 font-semibold text-lg">
+          <span>Developer , </span>
+          <span className="text-md text-indigo-200">
             Abhishek Singh Chauhan{" "}
           </span>
         </p>
 
-        <p className="text-gray-600 text-sm">
+        <p className="text-gray-100 text-sm">
           Softwere Developer | Passionate about creating amazing web
           experiences.
         </p>
