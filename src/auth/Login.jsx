@@ -104,7 +104,7 @@ const Login = () => {
                 <div className="mt-10">
                   or{" "}
                   <span
-                    className="text-bold text-rose-400"
+                    className="text-bold text-rose-400 text-md  hover:scale-105 transition-all duration-200 cursor-pointer"
                     onClick={() => navigate("/signup")}
                   >
                     Signup{" "}

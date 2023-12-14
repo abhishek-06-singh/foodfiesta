@@ -209,10 +209,11 @@ const Signup = () => {
                   )}
                 </div>
 
-                <div className="mb-4 text-right">
-                  <a href="#" className="text-sm text-blue-500 hover:underline">
-                    Already have an account?
-                  </a>
+                <div
+                  className="text-sm text-right text-rose-400 cursor-pointer hover:scale-105 transition-all duration-200 mb-10"
+                  onClick={() => navigate("/")}
+                >
+                  Already have an account?
                 </div>
 
                 <div className="mb-6">
