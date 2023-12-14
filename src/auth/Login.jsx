@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import SideImg from "../images/background8.png";
 import logo from "../images/logo2.png";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../store/userSlice";
 import { motion } from "framer-motion";
-const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+import LoadingScreen from "../loading/LoadingScreen";
+import { FaUser } from "react-icons/fa";
 
-  const [errors, setErrors] = useState({
+const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [profilePhoto, setProfilePhoto] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,8 +34,21 @@ const Login = () => {
     validateField(name, value);
   };
 
+  const handleProfilePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfilePhoto(URL.createObjectURL(file));
+    }
+  };
+
   const validateField = (fieldName, value) => {
     switch (fieldName) {
+      case "name":
+        setErrors({
+          ...errors,
+          name: validateName(value),
+        });
+        break;
       case "email":
         setErrors({
           ...errors,
@@ -51,15 +75,29 @@ const Login = () => {
     return password.length >= 6 ? "" : "Password must be at least 6 characters";
   };
 
-  const handleSubmit = (e) => {
+  const validateName = (name) => {
+    return name.length >= 3 ? "" : "Name must be at least 3 characters";
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const isFormValid = Object.keys(formData).every((field) => {
-      return validateField(field, formData[field]) === "";
-    });
+    const isFormValid = Object.values(errors).every((error) => error === "");
 
     if (isFormValid) {
+      setIsLoading(true);
+
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Dispatch the action to update user data in the Redux store
+      dispatch(setUserData(formData));
+
       console.log("Form submitted:", formData);
+
+      setIsLoading(false);
+      navigate("/home");
+    } else {
+      console.log("Form has errors. Please fix them before submitting.");
     }
   };
 
@@ -70,106 +108,154 @@ const Login = () => {
       exit={{ opacity: 0 }}
       className="flex h-screen bg-white"
     >
-      <img
-        className="hidden lg:block object-left rounded-tr-full overflow-hidden m-0 p-0"
-        src={SideImg}
-        alt="Your Alt Text"
-      />
+      {isLoading ? (
+        <LoadingScreen />
+      ) : (
+        <>
+          <img
+            className="hidden lg:block object-left rounded-tr-[20rem] overflow-hidden m-0 p-0"
+            src={SideImg}
+            alt="Your Alt Text"
+          />
 
-      <div className="w-full lg:w-1/2 p-8 flex items-center justify-center">
-        <div className="max-w-md w-full">
-          <div className="mb-6 text-end ">
-            <motion.img
-              initial={{ y: -1500, opacity: 0 }}
-              animate={{ y: 0, opacity: 5 }}
-              transition={{ type: "spring", duration: 1 }}
-              src={logo}
-              alt="Logo"
-              className="mx-auto h-28"
-            />
+          <div className="w-full lg:w-1/2 p-8 flex items-center justify-center">
+            <div className="max-w-md w-full">
+              <div className="mb-6 text-end ">
+                <motion.img
+                  initial={{ y: -1500, opacity: 0 }}
+                  animate={{ y: 0, opacity: 5 }}
+                  transition={{ type: "spring", duration: 1 }}
+                  src={logo}
+                  alt="Logo"
+                  className="mx-auto h-28"
+                />
+              </div>
+              <motion.h2
+                className="text-xl font-semibold text-gray-800 text-center mb-6"
+                initial={{ x: -500, opacity: 0 }}
+                animate={{ x: 0, opacity: 2 }}
+                transition={{ type: "spring", duration: 1 }}
+              >
+                Sign Up
+              </motion.h2>
+
+              <form onSubmit={handleSubmit}>
+                <div className="flex items-center  justify-center mb-5">
+                  <label
+                    htmlFor="profile-photo"
+                    className="cursor-pointer items-end"
+                  >
+                    {profilePhoto ? (
+                      <img
+                        src={profilePhoto}
+                        alt="Profile Preview"
+                        className="h-20 w-20 rounded-full mb-2"
+                      />
+                    ) : (
+                      <FaUser
+                        className="h-20 w-20 text-gray-300 mb-2"
+                        onClick={() =>
+                          document.getElementById("profile-photo").click()
+                        }
+                      />
+                    )}
+                    <input
+                      id="profile-photo"
+                      name="profile-photo"
+                      type="file"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={handleProfilePhotoChange}
+                    />
+                  </label>
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="email"
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                  >
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`w-full border p-2 rounded-full h-12 ${
+                      errors.name ? "border-red-400" : ""
+                    }`}
+                  />
+                  {errors.name && (
+                    <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+                  )}
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="email"
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full border p-2 rounded-full h-12 ${
+                      errors.email ? "border-red-400" : ""
+                    }`}
+                  />
+                  {errors.email && (
+                    <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="password"
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className={`w-full border p-2 rounded-full h-12 ${
+                      errors.password ? "border-red-400" : ""
+                    }`}
+                  />
+                  {errors.password && (
+                    <p className="text-red-400 text-xs mt-1">
+                      {errors.password}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mb-4 text-right">
+                  <a href="#" className="text-sm text-blue-500 hover:underline">
+                    Already have account ?
+                  </a>
+                </div>
+
+                <div className="mb-6">
+                  <button
+                    type="submit"
+                    className="w-full bg-rose-600 text-white p-2 hover:bg-rose-700 rounded-full h-12"
+                  >
+                    Log In
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-
-          <motion.h2
-            className="text-2xl font-semibold text-gray-800 text-center mb-6"
-            initial={{ x: -500, opacity: 0 }}
-            animate={{ x: 0, opacity: 2 }}
-            transition={{ type: "spring", duration: 1 }}
-          >
-            Sign in to your account
-          </motion.h2>
-
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Email Address/Username
-              </label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full border p-2 rounded-full h-12 ${
-                  errors.email ? "border-red-400" : ""
-                }`}
-              />
-              {errors.email && (
-                <p className="text-red-400 text-xs mt-1">{errors.email}</p>
-              )}
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className={`w-full border p-2 rounded-full h-12 ${
-                  errors.password ? "border-red-400" : ""
-                }`}
-              />
-              {errors.password && (
-                <p className="text-red-400 text-xs mt-1">{errors.password}</p>
-              )}
-            </div>
-
-            <div className="mb-4 text-right">
-              <a href="#" className="text-sm text-blue-500 hover:underline">
-                Forgot Password?
-              </a>
-            </div>
-
-            <div className="mb-6">
-              <button
-                type="submit"
-                className="w-full bg-rose-600 text-white p-2 hover:bg-rose-700 rounded-full h-12"
-              >
-                Log In
-              </button>
-            </div>
-
-            <div className="text-center mb-4">
-              <span className="text-gray-600">or</span>
-            </div>
-            <button
-              type="button"
-              className="w-3/4 bg-gray-200 text-black p-2 hover:bg-orange-200 hover:text-black flex items-center justify-center rounded-3xl h-12 ml-14"
-            >
-              Login with Google
-            </button>
-          </form>
-        </div>
-      </div>
+        </>
+      )}
     </motion.div>
   );
 };
