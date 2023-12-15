@@ -1,5 +1,6 @@
 # Food Fiesta 🍔🌮
-![logo2](https://github.com/abhishek-06-singh/foodfiesta/assets/115978151/c02ddfa9-2ae0-40de-8046-02f3caffa613)
+<img src="https://github.com/abhishek-06-singh/foodfiesta/assets/115978151/c02ddfa9-2ae0-40de-8046-02f3caffa613" alt="logo2" width="100">
+
 
 Welcome to Food Fiesta, your go-to destination for exploring and ordering delicious dishes online! This project is a side venture by a passionate React developer (that's me!) with 6 months of experience. Food Fiesta is designed to provide a seamless and enjoyable food ordering experience, and it's built using React, Tailwind, Redux, and the Google Maps API.
 
