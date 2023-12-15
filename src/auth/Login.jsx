@@ -47,7 +47,7 @@ const Login = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex h-screen bg-white overflow-hidden"
+      className="flex h-screen bg-[#F9FBF9] overflow-hidden"
     >
       {isLoading ? (
         <LoadingScreen />

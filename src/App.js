@@ -6,6 +6,7 @@ import Signup from "./auth/Signup";
 import Login from "./auth/Login";
 import Home from "./home/Home";
 import BetaHomeScreen from "./beta/BetaHomeScreen";
+import LandingExample from "./beta/LandingExample";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<BetaHomeScreen />} />
+          <Route path="/homie" element={<BetaHomeScreen />} />
+          <Route path="/home" element={<LandingExample />} />
         </Routes>
       </Router>
     </Provider>

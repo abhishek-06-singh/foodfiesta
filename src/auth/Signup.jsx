@@ -108,7 +108,7 @@ const Signup = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex h-screen bg-white"
+      className="flex h-screen bg-[#F9FBF9]"
     >
       {isLoading ? (
         <LoadingScreen />
