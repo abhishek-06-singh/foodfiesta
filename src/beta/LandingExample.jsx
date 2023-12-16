@@ -6,7 +6,7 @@ import logo from "../images/logo2.png";
 import { motion } from "framer-motion";
 import Footer from "./BetaFooter";
 import "./extra.css";
-
+import ProfileClickToast from "../toast/ProfileClickToast";
 const navigation = [
   { name: "Restaurants", href: "#" },
   { name: "Menu", href: "#" },
@@ -16,6 +16,16 @@ const navigation = [
 
 const LandingExample = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isToastOpen, setIsToastOpen] = useState(false);
+
+  const openToast = () => {
+    setIsToastOpen(true);
+  };
+
+  const closeToast = () => {
+    setIsToastOpen(false);
+  };
+
   return (
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -65,6 +75,7 @@ const LandingExample = () => {
                   src={localStorage.getItem("GoogleLoginPicture")}
                   alt="Google Profile"
                   className="h-10 rounded-full mr-2 shadow-xl"
+                  onClick={() => openToast()}
                 />
                 <span className="text-sm font-semibold leading-6 text-gray-900">
                   {localStorage.getItem("GoogleLoginName")}{" "}
@@ -82,6 +93,7 @@ const LandingExample = () => {
                       src={localStorage.getItem("customerAvatar")}
                       alt="User Profile"
                       className="h-10 rounded-full mr-2 shadow-xl"
+                      onClick={() => openToast()}
                     />
                     {JSON.parse(localStorage.getItem("userData")).name}
                   </div>
@@ -142,6 +154,7 @@ const LandingExample = () => {
                         src={localStorage.getItem("GoogleLoginPicture")}
                         alt="Google Profile"
                         className="h-10 shadow-xl rounded-full"
+                        onClick={() => openToast()}
                       />
                       <span className="text-sm font-semibold leading-6 text-gray-900">
                         {localStorage.getItem("GoogleLoginName")}{" "}
@@ -159,6 +172,7 @@ const LandingExample = () => {
                             src={localStorage.getItem("customerAvatar")}
                             alt="User Profile"
                             className="h-10 shadow-xl rounded-full"
+                            onClick={() => openToast()}
                           />
                           {JSON.parse(localStorage.getItem("userData")).name}
                         </>
@@ -173,6 +187,9 @@ const LandingExample = () => {
             </div>
           </Dialog.Panel>
         </Dialog>
+        {isToastOpen && (
+          <ProfileClickToast open={isToastOpen} onClose={closeToast} />
+        )}
       </header>
 
       <div className="relative isolate pt-14">

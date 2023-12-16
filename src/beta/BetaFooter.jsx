@@ -95,7 +95,7 @@ const BetaFooter = () => {
 
   return (
     <footer
-      className="bg-gradient-to-bl from-green-50 to-blue-50 mt-10 "
+      className="bg-gradient-to-bl from-indigo-50 to-green-50 mt-10 "
       aria-labelledby="footer-heading"
     >
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
