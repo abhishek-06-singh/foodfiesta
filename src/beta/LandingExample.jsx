@@ -4,6 +4,7 @@ import { FaArchive } from "react-icons/fa";
 import FoodPng from "../images/food3.jpg";
 import logo from "../images/logo2.png";
 import { motion } from "framer-motion";
+import Footer from "./BetaFooter";
 import "./extra.css";
 
 const navigation = [
@@ -239,6 +240,7 @@ const LandingExample = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
