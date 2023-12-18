@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 import Footer from "./BetaFooter";
 import "./extra.css";
 import ProfileClickToast from "../toast/ProfileClickToast";
+import Card from "./Card";
+import { useNavigate } from "react-router-dom";
+
 const navigation = [
   { name: "Restaurants", href: "#" },
   { name: "Menu", href: "#" },
@@ -15,6 +18,8 @@ const navigation = [
 ];
 
 const LandingExample = () => {
+  const navigate = useNavigate();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isToastOpen, setIsToastOpen] = useState(false);
 
@@ -227,9 +232,9 @@ const LandingExample = () => {
                 creations, delivered to you with love!
               </p>
 
-              <div className="mt-10 flex items-center justify-center gap-x-6">
+              <div className="mt-10 flex items-center justify-center gap-x-6 cursor-pointer">
                 <a
-                  href="#"
+                  onClick={() => navigate("/BetaCardsPage")}
                   className="rounded-md bg-rose-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600"
                 >
                   Start Eating
@@ -257,6 +262,8 @@ const LandingExample = () => {
           </div>
         </div>
       </div>
+
+      {/* <Card /> */}
       <Footer />
     </div>
   );

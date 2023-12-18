@@ -7,6 +7,7 @@ import Login from "./auth/Login";
 import Home from "./home/Home";
 import BetaHomeScreen from "./beta/BetaHomeScreen";
 import LandingExample from "./beta/LandingExample";
+import BetaCardsPage from "./beta/BetaCardsPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/homie" element={<BetaHomeScreen />} />
           <Route path="/home" element={<LandingExample />} />
+          <Route path="/BetaCardsPage" element={<BetaCardsPage />} />
         </Routes>
       </Router>
     </Provider>
