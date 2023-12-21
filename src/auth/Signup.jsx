@@ -8,10 +8,13 @@ import { motion } from "framer-motion";
 import LoadingScreen from "../loading/LoadingScreen";
 import { FaUser } from "react-icons/fa";
 import UploadPhotoModal from "../modals/UploadPhotoModal";
+import { LuEye } from "react-icons/lu";
+import { LuEyeOff } from "react-icons/lu";
 
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,7 +62,9 @@ const Signup = () => {
         break;
     }
   };
-
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email) ? "" : "Invalid email address";
@@ -185,23 +190,36 @@ const Signup = () => {
                   )}
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 relative">
                   <label
                     htmlFor="password"
                     className="block text-gray-700 text-sm font-bold mb-2"
                   >
                     Password
                   </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    className={`w-full border p-2 rounded-full h-12 ${
-                      errors.password ? "border-red-400" : ""
-                    }`}
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      className={`w-full border p-2 rounded-full h-12 ${
+                        errors.password ? "border-red-400" : ""
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleTogglePassword}
+                      className="absolute  right-5 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                    >
+                      {showPassword ? (
+                        <LuEyeOff className="text-rose-800 text-xl " />
+                      ) : (
+                        <LuEye className="text-rose-800 text-xl " />
+                      )}
+                    </button>
+                  </div>
                   {errors.password && (
                     <p className="text-red-400 text-xs mt-1">
                       {errors.password}

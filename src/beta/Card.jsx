@@ -47,36 +47,7 @@ const ProductCard = () => {
         </button>
       </div>
 
-      {/* {modalIsOpen && (
-        <div className="fixed inset-0 overflow-y-auto z-50 flex items-center justify-center bg-black bg-opacity-10">
-          <div className="relative max-w-lg mx-auto p-4 bg-white rounded-xl shadow-lg">
-            <div
-              className="absolute top-1 right-1 cursor-pointer bg-slate-100 justify-center items-center flex-shrink-0 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 z-40"
-              onClick={closeModal}
-            >
-              <MdCancel />
-            </div>
-            <img
-              className="rounded-t-lg w-full mb-4 p-0"
-              src={product.img}
-              alt=""
-            />
-            <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900">
-              {product.title}
-            </h5>
-            <div className="flex items-center mb-4">
-              {Array.from({ length: product.rating }, (_, index) => (
-                <FaStar key={index} className="text-yellow-500 text-2xl" />
-              ))}
-            </div>
-            <p className="mb-4 text-gray-700 dark:text-gray-400 overflow-y-auto h-40 scrollbar-hide text-sm">
-              {product.fulldescription}
-            </p>
-            <div className="text-green-500 text-md font-medium">{`$${product.price}`}</div>
-            <div className="text-gray-700">{product.available}</div>
-          </div>
-        </div>
-      )} */}
+    
     </div>
   );
 };
