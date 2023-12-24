@@ -6,8 +6,14 @@ import Signup from "./auth/Signup";
 import Login from "./auth/Login";
 import Home from "./home/Home";
 import BetaHomeScreen from "./beta/BetaHomeScreen";
-import LandingExample from "./beta/LandingExample";
 import BetaCardsPage from "./beta/BetaCardsPage";
+import MyComponent from "./auth/MyComponent ";
+import LandingPage from "./screens/LandingPage";
+import Menu from "./screens/Menu";
+import Cart from "./screens/Cart";
+import ContactUs from "./screens/ContactUs";
+import ProductPage from "./screens/ProductPage";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
@@ -17,8 +23,54 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Login />} />
           <Route path="/homie" element={<BetaHomeScreen />} />
-          <Route path="/home" element={<LandingExample />} />
-          <Route path="/BetaCardsPage" element={<BetaCardsPage />} />
+          <Route path="/home" element={<LandingPage />} />
+
+          <Route
+            path="/app"
+            element={
+              <>
+                <Navbar />
+                <MyComponent />
+              </>
+            }
+          />
+
+          <Route
+            path="/restaurants"
+            element={
+              <>
+                <Navbar />
+                <ProductPage />
+              </>
+            }
+          />
+          <Route
+            path="/menu"
+            element={
+              <>
+                <Navbar />
+                <Menu />
+              </>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <>
+                <Navbar />
+                <Cart />
+              </>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <>
+                <Navbar />
+                <ContactUs />
+              </>
+            }
+          />
         </Routes>
       </Router>
     </Provider>

@@ -91,7 +91,6 @@ const Signup = () => {
   };
 
   const handleUpload = (file) => {
-    // Handle file upload logic here
     setFormData({ ...formData, profilePhoto: file });
   };
 
@@ -99,7 +98,6 @@ const Signup = () => {
     setIsModalOpen(false);
     setIsLoading(true);
 
-    // Dispatch the action to update user data in the Redux store
     dispatch(setUserData(formData));
 
     setTimeout(() => {
