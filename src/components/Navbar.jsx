@@ -13,8 +13,10 @@ const Navbar = () => {
   const googleLoginPicture = localStorage.getItem("GoogleLoginPicture");
   const customerAvatar = localStorage.getItem("customerAvatar");
   const Email = localStorage.getItem("GoogleLoginEmail");
-  const Mail = JSON.parse(localStorage.getItem("userData")).email;
-  const NAME = JSON.parse(localStorage.getItem("userData")).name;
+  const userData = JSON.parse(localStorage.getItem("userData")) || {};
+  const Mail = userData.email || "";
+  const NAME = userData.name || "";
+
   const GoogleName = localStorage.getItem("GoogleLoginName");
 
   return (
@@ -202,7 +204,7 @@ const Navbar = () => {
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
-                    {NAME || GoogleName}
+                    {GoogleName || NAME}
                   </div>
                   <div className="text-sm font-medium text-gray-500">
                     {Email || Mail}

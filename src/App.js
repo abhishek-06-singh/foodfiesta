@@ -14,6 +14,7 @@ import Cart from "./screens/Cart";
 import ContactUs from "./screens/ContactUs";
 import ProductPage from "./screens/ProductPage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
               <>
                 <Navbar />
                 <ProductPage />
+                <Footer />
               </>
             }
           />
@@ -50,6 +52,7 @@ const App = () => {
               <>
                 <Navbar />
                 <Menu />
+                <Footer />
               </>
             }
           />
@@ -59,6 +62,7 @@ const App = () => {
               <>
                 <Navbar />
                 <Cart />
+                <Footer />
               </>
             }
           />
@@ -68,6 +72,7 @@ const App = () => {
               <>
                 <Navbar />
                 <ContactUs />
+                <Footer />
               </>
             }
           />
