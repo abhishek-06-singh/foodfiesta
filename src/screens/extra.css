@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.title {
+  font-family: "Pacifico", cursive;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.title-product {
+  color: rgb(225, 76, 114);
+  font-family: "Pacifico", cursive;
+  margin-bottom: 10px;
+  display: block;
+}

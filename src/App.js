@@ -15,6 +15,7 @@ import ContactUs from "./screens/ContactUs";
 import ProductPage from "./screens/ProductPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PrivacyPolicy from "./screens/PrivacyPolicy";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/homie" element={<BetaHomeScreen />} />
           <Route path="/home" element={<LandingPage />} />
+          <Route path="/Privacy" element={<PrivacyPolicy />} />
 
           <Route
             path="/app"
