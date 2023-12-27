@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { setUserData } from "../store/userSlice";
 import { motion } from "framer-motion";
 import LoadingScreen from "../loading/LoadingScreen";
-import { FaUser } from "react-icons/fa";
 import UploadPhotoModal from "../modals/UploadPhotoModal";
 import { LuEye } from "react-icons/lu";
 import { LuEyeOff } from "react-icons/lu";
@@ -97,9 +96,7 @@ const Signup = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
     setIsLoading(true);
-
     dispatch(setUserData(formData));
-
     setTimeout(() => {
       setIsLoading(false);
       navigate("/home");

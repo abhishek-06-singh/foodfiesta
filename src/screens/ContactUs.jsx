@@ -6,9 +6,9 @@ import logo from "../images/logo2.png";
 import { useNavigate } from "react-router-dom";
 
 const quotes = [
-  "“Coding is like cooking. Sometimes all you need is a missing semicolon to ruin everything.”",
-  "“I’m not lazy, I’m on energy-saving mode.”",
-  "“Why do programmers prefer dark mode? Because light attracts bugs!”",
+  "Coding is like cooking. Sometimes all you need is a missing semicolon to ruin everything.",
+  "I’m not lazy, I’m on energy-saving mode.",
+  "Why do programmers prefer dark mode? Because light attracts bugs!",
 ];
 const ContactUs = () => {
   const navigate = useNavigate();
@@ -69,11 +69,11 @@ const ContactUs = () => {
     if (validateForm()) {
       console.log("Form data submitted:", formData);
       const formDataText =
-        `🧔🏻Visitor Name: ${formData.firstName}\n` +
-        `📭Email: ${formData.email}\n` +
-        `📭Company: ${formData.company}\n` +
-        `📭Company: ${formData.designation}\n` +
-        `📭Company: ${formData.message}\n`;
+        `Visitor Name: ${formData.firstName}\n` +
+        `Email: ${formData.email}\n` +
+        `Company: ${formData.company}\n` +
+        `Designation: ${formData.designation}\n` +
+        `Message: ${formData.message}\n`;
 
       const finalMessage = `${messageHeader}\n\n${formDataText}`;
 

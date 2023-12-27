@@ -7,6 +7,7 @@ import lottie4 from "../images/lottie4.json";
 import "./extra.css";
 
 import { motion, useAnimation } from "framer-motion";
+import BannerSlider from "./BannerSlider";
 
 const ProductPage = () => {
   const [lottieOptions, setLottieOptions] = useState({
@@ -59,31 +60,36 @@ const ProductPage = () => {
   }, [controls]);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center lg:h-screen md:h-fit sm:h-fit bg-gradient-to-bl from-rose-50 via-indigo-100 to-white text-black lg:p-40 md:p-20 sm:p-10">
-      <div className="md:w-1/2 md:order-1 p-4 md:p-8 text-center md:text-left mt-28 ">
-        <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 lg:mt-0 md:mt-0 sm:mt-12">
-          <motion.span
-            // className="text-rose-600 text-3xl md:text-5xl lg:text-6xl font-semibold block mb-2"
-            className="title-product"
-            animate={controls}
-          >
-            {spanTextOptions[currentSpanIndex]}
-          </motion.span>
-          Welcome to Food Fiesta
-        </h1>
-        <p className="text-lg">
-          Your Ultimate Culinary Journey awaits you. Explore the world of
-          flavors and indulge in the art of gastronomy.
-        </p>
-        <button className="bg-rose-600 text-white font-bold py-2 px-4 mt-4 rounded-xl">
-          Explore Now
-        </button>
-      </div>
+    <>
+      <div className="flex flex-col md:flex-row items-center justify-center lg:h-screen md:h-fit sm:h-fit bg-gradient-to-bl from-rose-50 via-indigo-100 to-white text-black lg:p-40 md:p-20 sm:p-10">
+        <div className="md:w-1/2 md:order-1 p-4 md:p-8 text-center md:text-left mt-28 ">
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 lg:mt-0 md:mt-0 sm:mt-12">
+            <motion.span
+              // className="text-rose-600 text-3xl md:text-5xl lg:text-6xl font-semibold block mb-2"
+              className="title-product"
+              animate={controls}
+            >
+              {spanTextOptions[currentSpanIndex]}
+            </motion.span>
+            Welcome to Food Fiesta
+          </h1>
+          <p className="text-lg">
+            Your Ultimate Culinary Journey awaits you. Explore the world of
+            flavors and indulge in the art of gastronomy.
+          </p>
+          <button className="bg-rose-600 text-white font-bold py-2 px-4 mt-4 rounded-xl">
+            Explore Now
+          </button>
+        </div>
 
-      <div className="md:w-1/2 md:order-2 p-4">
-        <Lottie options={lottieOptions} height={400} width={300} />
+        <div className="md:w-1/2 md:order-2 p-4">
+          <Lottie options={lottieOptions} height={400} width={300} />
+        </div>
       </div>
-    </div>
+      <div className="grid place-items-center">
+        <BannerSlider />
+      </div>
+    </>
   );
 };
 
