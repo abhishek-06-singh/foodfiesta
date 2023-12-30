@@ -64,7 +64,7 @@ const ContactUs = () => {
     e.preventDefault();
     const phoneNo = "7000201383";
 
-    const messageHeader = "🚀 Hello, I visited your app  Abhishek 🚀";
+    const messageHeader = "🚀 Hello, I visited your app Abhishek 🚀";
 
     if (validateForm()) {
       console.log("Form data submitted:", formData);

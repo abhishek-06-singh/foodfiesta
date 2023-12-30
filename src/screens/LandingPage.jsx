@@ -5,7 +5,7 @@ import FoodPng from "../images/food3.jpg";
 import logo from "../images/logo2.png";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
-import "./extra.css";
+import "../components/extra.css";
 
 import ProfileClickToast from "../toast/ProfileClickToast";
 
