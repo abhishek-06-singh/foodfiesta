@@ -48,26 +48,29 @@ const DishCarousel = ({ images, status, error }) => {
 
   if (status === "succeeded") {
     return (
-      <div className="w-3/4 overflow-hidden mt-20 h-48 mx-auto mb-20">
-        <span className="text-3xl font-bold mb-5 block">
-          What's on your mind?
-        </span>
-        <Carousel
-          value={images}
-          itemTemplate={(imgSrc) => (
-            <div className="p-m-2">
-              <img
-                src={`${IMG_URL}${imgSrc}`}
-                alt={`Slide`}
-                className="w-full h-28 object-cover"
-              />
-            </div>
-          )}
-          numVisible={5}
-          numScroll={1}
-          responsiveOptions={responsiveSettings}
-        />
-      </div>
+      <>
+        <div className="w-3/4 overflow-hidden mt-20 h-48 mx-auto mb-20">
+          <span className="text-3xl font-bold mb-5 block">
+            What's on your mind?
+          </span>
+          <Carousel
+            value={images}
+            itemTemplate={(imgSrc) => (
+              <div className="p-m-2">
+                <img
+                  src={`${IMG_URL}${imgSrc}`}
+                  alt={`Slide`}
+                  className="w-full h-28 object-cover"
+                />
+              </div>
+            )}
+            numVisible={5}
+            numScroll={1}
+            responsiveOptions={responsiveSettings}
+          />
+        </div>
+        <div className="w-4/5 h-[1px] bg-gray-300" />
+      </>
     );
   }
 };
