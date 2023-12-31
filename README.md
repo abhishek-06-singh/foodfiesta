@@ -12,6 +12,9 @@ Welcome to Food Fiesta, your go-to destination for exploring and ordering delici
 
 ![screencapture-foodfiesta-vercel-app-signup-2023-12-15-16_33_11](https://github.com/abhishek-06-singh/foodfiesta/assets/115978151/a69c7c1e-3969-43a9-955a-c6c2edfd3b5f)
 
+
+![screencapture-localhost-3001-restaurants-2024-01-01-00_21_45](https://github.com/abhishek-06-singh/foodfiesta/assets/115978151/53171f08-c899-41f7-9ba7-0dc33366945a)
+
 ## Features Goles
 
 Since this is an ongoing project these are some features i am planning to create
