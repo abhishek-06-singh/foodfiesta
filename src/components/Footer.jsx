@@ -95,7 +95,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-gradient-to-bl from-indigo-50 to-green-0 "
+      className="bg-gradient-to-t from-purple-950 via-black to-slate-950"
       aria-labelledby="footer-heading"
     >
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
@@ -115,7 +115,7 @@ const Footer = () => {
               src={logo}
               className=" h-28"
             />
-            <p className="text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-gray-100">
               Making the world happy by taking care of your Tummy with Yummy
               food .
             </p>
@@ -124,7 +124,7 @@ const Footer = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-100 hover:text-gray-500"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -134,7 +134,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-500">
+          <p className="text-xs leading-5 text-gray-100">
             &copy; 2023 Abhishek Singh Chauhan . All rights reserved.
           </p>
         </div>

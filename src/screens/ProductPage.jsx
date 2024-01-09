@@ -59,7 +59,7 @@ const ProductPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="bg-gray-50">
       <HeroProductPage />
       <div className="grid place-items-center">
         <BannerSlider
@@ -79,7 +79,7 @@ const ProductPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:p-40 md:p-30 p-16">
         <Card resdata={restroData} status={restroStatus} error={restroError} />
       </div>
-    </>
+    </div>
   );
 };
 

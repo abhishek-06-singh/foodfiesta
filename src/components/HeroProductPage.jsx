@@ -60,7 +60,7 @@ const HeroProductPage = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center justify-center lg:h-screen md:h-fit sm:h-fit bg-gradient-to-bl from-rose-50 via-indigo-100 to-white text-black lg:p-40 md:p-20 sm:p-10">
+      <div className="flex flex-col md:flex-row items-center justify-center lg:h-screen md:h-fit sm:h-fit bg-gradient-to-r from-rose-100 to-teal-100 text-black lg:p-40 md:p-20 sm:p-10">
         <div className="md:w-1/2 md:order-1 p-4 md:p-8 text-center md:text-left mt-28 ">
           <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 lg:mt-0 md:mt-0 sm:mt-12">
             <motion.span className="title-product" animate={controls}>

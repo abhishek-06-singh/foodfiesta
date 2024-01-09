@@ -27,7 +27,7 @@ const DishCarousel = ({ images, status, error }) => {
 
   if (status === "loading") {
     return (
-      <div className="w-3/4 overflow-hidden mt-20 h-48 mx-auto mb-20">
+      <div className="w-3/4 overflow-hidden mt-20 h-56 mx-auto mb-20 bg-gray-50">
         <span className="text-3xl font-bold mb-5 block">
           What's on your mind?
         </span>
@@ -60,7 +60,7 @@ const DishCarousel = ({ images, status, error }) => {
                 <img
                   src={`${IMG_URL}${imgSrc}`}
                   alt={`Slide`}
-                  className="w-full h-28 object-cover"
+                  className="w-full h-36 object-cover bg-gray-50"
                 />
               </div>
             )}

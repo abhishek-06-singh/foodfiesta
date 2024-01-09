@@ -102,7 +102,7 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <div className="relative isolate bg-gradient-to-bl from-rose-50 via-indigo-50 to-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="relative isolate bg-gradient-to-r from-rose-50 to-teal-50 px-6 py-24 sm:py-32 lg:px-8">
       <svg
         className="absolute inset-0 -z-10 h-full w-full stroke-indigo-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true"
